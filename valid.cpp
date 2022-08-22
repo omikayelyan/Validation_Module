@@ -5,8 +5,8 @@
 std::string ValidEmail(const std::string&);
 bool ValidDate(int, int, int);
 bool LeapYear(int);
-bool MobileValid(std::string);
-bool ValidURL(std::string);
+bool MobileValid(const std::string&);
+bool ValidURL(const std::string&);
 bool ValidCard(long int);
 void validation();
 
@@ -32,15 +32,7 @@ bool ValidDate(int day, int month, int year)
 {
     const int maxYear = 2022;
     const int minYear = 1800;
-    if (year < minYear || year > maxYear)
-    {
-        return false;
-    }
-    if (day < 1 || day > 31)
-    {
-        return false;
-    }
-    if (month < 1 || month > 12)
+    if (year < minYear || year > maxYear || day < 1 || day > 31 || month < 1 || month > 12)
     {
         return false;
     }
@@ -62,7 +54,7 @@ bool ValidDate(int day, int month, int year)
     return true;
 }
 
-bool MobileValid(std::string number)
+bool MobileValid(const std::string& number)
 {
     const std::regex pattern("(091|099|096|043|033|079|055|095|041|044|066|050|093|094|077|098|049|022)?[0-9]{6}");
     if (regex_match(number, pattern))
@@ -75,7 +67,7 @@ bool MobileValid(std::string number)
     }
 }
 
-bool ValidURL(std::string url)
+bool ValidURL(const std::string& url)
 {
     const std::regex pattern("((http|https)://)(www.)?[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)");
     if (regex_match(url, pattern))
