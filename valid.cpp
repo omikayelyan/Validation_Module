@@ -32,7 +32,11 @@ bool ValidDate(int day, int month, int year)
 {
     const int maxYear = 2022;
     const int minYear = 1800;
-    if (year < minYear || year > maxYear || day < 1 || day > 31 || month < 1 || month > 12)
+    const int minDay = 1;
+    const int maxDay = 31;	
+    const int minMonth = 1;
+    comst int maxMonth = 12;	
+    if (year < minYear || year > maxYear || day < minDay || day > maxDay || month < minMonth || month > maxMonth)
     {
         return false;
     }
